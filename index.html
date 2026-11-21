@@ -3,185 +3,123 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#17212b">
+<meta name="theme-color" content="#101820">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
-<title>DEER | Exercise Extremity Calculator</title>
+<title>DEER | Exercise Extremeness Rating</title>
 <style>
-:root{--bg:#101820;--panel:#192631;--panel2:#223340;--text:#f3f6f8;--muted:#a9b8c4;--line:#344754;--accent:#d5a84f;--low:#91a9b8}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-main{max-width:760px;margin:auto;padding:18px 14px 40px}
-header{padding:14px 4px 18px}
-.kicker{color:var(--accent);font-size:.75rem;font-weight:800;letter-spacing:.16em}
-h1{font-size:2rem;line-height:1.05;margin:7px 0}
-.sub{color:var(--muted);margin:8px 0 0;font-size:.9rem}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;margin:12px 0}
-h2{font-size:1.08rem;margin:0 0 12px}
-.note{color:var(--muted);font-size:.82rem}
-.criterion{padding:13px 0;border-top:1px solid var(--line)}
-.criterion:first-of-type{border-top:0}
-.crit-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
-.crit-title{font-weight:750}
-.weight{font-size:.76rem;color:var(--muted);white-space:nowrap}
-.crit-desc{color:var(--muted);font-size:.82rem;margin:4px 0 10px}
-.guide{margin:8px 0 10px;border:1px solid var(--line);border-radius:10px;background:#14212b;overflow:hidden}
-.guide summary{cursor:pointer;padding:9px 11px;color:var(--accent);font-size:.8rem;font-weight:750;list-style-position:inside}
-.anchors{display:grid;grid-template-columns:1fr;gap:7px;padding:0 10px 10px}
-.anchor{font-size:.78rem;color:var(--muted);padding:7px 9px;background:var(--panel2);border-radius:8px}
-.anchor strong{color:var(--text);display:inline-block;min-width:32px}
-input[type=range]{width:100%;accent-color:var(--accent);height:28px}
-.range-row{display:flex;justify-content:space-between;align-items:center;font-size:.75rem;color:var(--muted)}
-.value{color:var(--accent);font-weight:800;font-size:1.05rem}
-.result{background:linear-gradient(145deg,#263744,#1a2934);border:1px solid #50606a}
-.scoreline{display:flex;align-items:baseline;gap:8px}
-.big{font-size:3.4rem;font-weight:850;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
-.outof{color:var(--muted)}
-.level{display:inline-block;border:1px solid var(--accent);border-radius:999px;padding:5px 11px;font-weight:800;color:var(--accent);margin-top:9px}
-.bar{height:9px;background:#0e171e;border-radius:20px;overflow:hidden;margin-top:14px}
-.fill{height:100%;width:10%;background:var(--accent);transition:width .15s}
-table{width:100%;border-collapse:collapse;font-size:.88rem}
-td,th{text-align:left;padding:9px 6px;border-bottom:1px solid var(--line)}
-th{color:var(--muted);font-weight:650}
-td:first-child{font-weight:800;width:74px}
-.small{font-size:.78rem;color:var(--muted)}
-.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
-button{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:11px;padding:11px 14px;font-weight:700;font-size:.9rem}
-button.primary{background:var(--accent);color:#18212a;border-color:var(--accent)}
-textarea{width:100%;min-height:84px;border:1px solid var(--line);border-radius:10px;background:#111d26;color:var(--text);padding:11px;font:inherit}
-.footer{font-size:.76rem;color:var(--muted);padding:8px 4px}
-@media(min-width:600px){main{padding:28px 22px 50px}.card{padding:20px}}
+:root{--bg:#101820;--panel:#192631;--panel2:#223340;--text:#f3f6f8;--muted:#a9b8c4;--line:#344754;--accent:#d5a84f;--good:#8db7a0;--danger:#d98c7d}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:760px;margin:auto;padding:12px 14px 40px}header{padding:8px 0 12px;text-align:center}.brand-logo{display:block;width:100%;max-width:620px;height:auto;margin:0 auto;border-radius:12px}.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;margin:12px 0}h2{font-size:1.08rem;margin:0 0 12px}.note{color:var(--muted);font-size:.82rem;margin:0 0 10px}.criterion{padding:13px 0;border-top:1px solid var(--line)}.criterion:first-child{border-top:0}.crit-head{display:flex;justify-content:space-between;gap:10px;align-items:center}.crit-title{font-weight:750}.weight{font-size:.76rem;color:var(--muted);white-space:nowrap}.crit-desc{color:var(--muted);font-size:.82rem;margin:4px 0 10px}.guide{margin:8px 0 10px;border:1px solid var(--line);border-radius:10px;background:#14212b;overflow:hidden}.guide summary{cursor:pointer;padding:9px 11px;color:var(--accent);font-size:.8rem;font-weight:750;list-style-position:inside}.anchors{display:grid;grid-template-columns:1fr;gap:7px;padding:0 10px 10px}.anchor{font-size:.78rem;color:var(--muted);padding:7px 9px;background:var(--panel2);border-radius:8px}.anchor strong{color:var(--text);display:inline-block;min-width:42px}
+.score-controls{display:flex;align-items:center;gap:10px}.score-controls input[type=range]{flex:1;min-width:0;accent-color:var(--accent);height:28px}.score-controls input[type=range]:disabled{opacity:.45}.range-row{display:flex;justify-content:space-between;align-items:center;font-size:.75rem;color:var(--muted)}.value{color:var(--accent);font-weight:800;font-size:1.05rem}.lock-btn{flex:0 0 42px;width:42px;height:42px;padding:0;display:grid;place-items:center;font-size:1.15rem;border-radius:10px}.lock-btn[aria-pressed=true]{border-color:var(--accent);color:var(--accent);background:#30291b}.lock-label{font-size:.68rem;color:var(--muted);text-align:center;margin-top:2px}
+.result{background:linear-gradient(145deg,#263744,#1a2934);border:1px solid #50606a}.scoreline{display:flex;align-items:baseline;gap:8px}.big{font-size:3.4rem;font-weight:850;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}.outof{color:var(--muted)}.level{display:inline-block;border:1px solid var(--accent);border-radius:999px;padding:5px 11px;font-weight:800;color:var(--accent);margin-top:9px}.bar{height:9px;background:#0e171e;border-radius:20px;overflow:hidden;margin-top:14px}.fill{height:100%;width:10%;background:var(--accent);transition:width .15s}table{width:100%;border-collapse:collapse;font-size:.88rem}td,th{text-align:left;padding:9px 6px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-weight:650}td:first-child{font-weight:800;width:74px}.small{font-size:.78rem;color:var(--muted)}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}button{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:11px;padding:11px 14px;font-weight:700;font-size:.9rem;cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}button.primary{background:var(--accent);color:#18212a;border-color:var(--accent)}button:disabled{opacity:.5;cursor:not-allowed}input[type=text],textarea{width:100%;border:1px solid var(--line);border-radius:10px;background:#111d26;color:var(--text);padding:11px;font:inherit}textarea{min-height:84px;resize:vertical}.field-label{display:block;font-size:.8rem;color:var(--muted);margin:12px 0 5px}.tabs{display:flex;gap:8px;margin-bottom:12px}.tab[aria-selected=true]{background:var(--accent);color:#18212a;border-color:var(--accent)}.archive-item{border:1px solid var(--line);border-radius:11px;padding:12px;margin:9px 0;background:#14212b}.archive-title{font-weight:800}.archive-meta{font-size:.75rem;color:var(--muted);margin:3px 0 8px}.archive-details{font-size:.82rem;color:var(--muted);white-space:pre-wrap}.empty{padding:16px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:10px}.status{min-height:1.2em}.footer{font-size:.76rem;color:var(--muted);padding:8px 4px}.modal-backdrop{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:20px;z-index:20}.modal-backdrop.show{display:flex}.modal{width:min(100%,360px);background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 16px 50px #0008}.modal h2{margin:0 0 8px}.modal p{color:var(--muted);font-size:.9rem}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.danger{border-color:var(--danger);color:var(--danger)}
+@media(min-width:600px){main{padding:22px 22px 50px}.card{padding:20px}}
 </style>
 </head>
 <body>
 <main>
-<header>
-<div class="kicker">DETECTION DOG TRAINING</div>
-<h1>DEER Calculator</h1>
-<div class="sub">Detection Exercise Extremity Rating · Interactive 1–10 assessment</div>
-</header>
-
-<section class="card result" aria-live="polite">
-<div class="kicker">OVERALL EXERCISE EXTREMITY</div>
-<div class="scoreline"><div class="big" id="total">1.0</div><div class="outof">/ 10</div></div>
-<div class="level" id="level">Pleb level</div>
-<div class="small" id="leveldesc">Minimal challenge</div>
-<div class="bar"><div class="fill" id="fill"></div></div>
-<p class="small" id="formula">Weighted average · 7 criteria · 100% total weighting</p>
-</section>
+<header><img class="brand-logo" src="deer-logo.jpg" alt="DEER — Detection Exercise Extremeness Rating. Test harder. Train smarter."></header>
 
 <section class="card">
-<h2>01 · Individual scoring criteria</h2>
-<p class="note">Set each criterion from 1 (lowest challenge) to 10 (highest challenge). Expand each scoring guide for 1, 5 and 10 examples. Scores are weighted automatically.</p>
+<h2>Individual Scoring Criteria</h2>
+<p class="note">Set each criterion from 1 (lowest challenge) to 10 (highest challenge). Expand each scoring guide for the 1, 5 and 10 examples. Scores are weighted automatically. Use the padlock to lock or unlock each score.</p>
 <div id="criteria"></div>
 </section>
 
+
+<section class="card" aria-labelledby="reference-heading">
+<h2 id="reference-heading">Individual Scoring Reference</h2>
+<table><thead><tr><th>Score</th><th>Reference</th></tr></thead><tbody>
+<tr><td>1</td><td>Minimal</td></tr><tr><td>2–3</td><td>Low</td></tr><tr><td>4–5</td><td>Moderate</td></tr><tr><td>6–7</td><td>High</td></tr><tr><td>8–9</td><td>Very high</td></tr><tr><td>10</td><td>Maximum validated level</td></tr>
+</tbody></table>
+<p class="note" style="margin-top:10px">Apply these anchors using your organisation’s authorised training framework and validated exercise configurations. Score the exercise as conducted; do not use this rating to predict odour behaviour or real-world detectability.</p>
+</section>
+
+
+<section class="card result" aria-live="polite">
+<div class="small" style="letter-spacing:.13em;font-weight:800;color:var(--accent)">OVERALL EXERCISE EXTREMENESS</div>
+<div class="scoreline"><div class="big" id="total">1.0</div><div class="outof">/ 10</div></div>
+<div class="level" id="level">Pleb level</div><div class="small" id="leveldesc">Minimal challenge: are you still on course?</div>
+<div class="bar"><div class="fill" id="fill"></div></div><p class="small" id="formula">Weighted average · 7 criteria · 100% total weighting</p>
+</section>
+
 <section class="card">
-<h2>02 · Overall extremity scale</h2>
-<table>
-<thead><tr><th>Score</th><th>Classification</th><th>General description</th></tr></thead>
-<tbody>
-<tr><td>1</td><td>Pleb level</td><td>Minimal challenge</td></tr>
+<h2>Overall Exercise Extremeness Scale</h2>
+<table><thead><tr><th>Score</th><th>Classification</th><th>General description</th></tr></thead><tbody>
+<tr><td>1</td><td>Pleb level</td><td>Minimal challenge: are you still on course?</td></tr>
 <tr><td>2–3</td><td>Basic</td><td>Foundational challenge: congrats, you're almost on recall</td></tr>
-<tr><td>4–5</td><td>Intermediate</td><td>Moderate challenge</td></tr>
-<tr><td>6–7</td><td>Advanced</td><td>High challenge</td></tr>
+<tr><td>4–5</td><td>Intermediate</td><td>Moderate challenge: average handler</td></tr>
+<tr><td>6–7</td><td>Advanced</td><td>High challenge: high achiever</td></tr>
 <tr><td>8–9</td><td>Extreme</td><td>Very high challenge: my dog is basically a Mal</td></tr>
-<tr><td>10</td><td>Elite</td><td>Highest validated challenge: DNF or Pinocchio</td></tr>
-</tbody>
-</table>
+<tr><td>10</td><td>Elite</td><td>Highest difficulty: unicorn</td></tr>
+</tbody></table>
 <p class="small">Classification bands are provisional. The calculated score is shown to one decimal place; classification uses the nearest whole-number score.</p>
 </section>
 
 <section class="card">
-<h2>03 · Individual score reference</h2>
-<table>
-<thead><tr><th>Score</th><th>Reference</th></tr></thead>
-<tbody>
-<tr><td>1</td><td>Minimal</td></tr>
-<tr><td>2–3</td><td>Low</td></tr>
-<tr><td>4–5</td><td>Moderate</td></tr>
-<tr><td>6–7</td><td>High</td></tr>
-<tr><td>8–9</td><td>Very high</td></tr>
-<tr><td>10</td><td>Maximum validated level</td></tr>
-</tbody>
-</table>
-<p class="note">Apply these anchors using your organisation’s authorised training framework and validated exercise configurations. Score the exercise as conducted; do not use this rating to predict odour plume behaviour or real-world detectability.</p>
-</section>
-
-<section class="card">
-<h2>04 · Assessment record</h2>
-<label class="small" for="notes">Exercise ID / assessor notes</label>
-<textarea id="notes" placeholder="Record exercise ID, approved training-aid reference, environmental notes and assessor observations…"></textarea>
-<div class="actions">
-<button class="primary" id="copy">Copy assessment</button>
-<button id="reset">Reset scores</button>
+<h2>Assessment Record</h2>
+<div class="tabs" role="tablist" aria-label="Assessment record views">
+<button class="tab" id="assessmentTab" role="tab" aria-selected="true" aria-controls="assessmentPanel">Assessment</button>
+<button class="tab" id="archiveTab" role="tab" aria-selected="false" aria-controls="archivePanel">Archive <span id="archiveCount">(0)</span></button>
 </div>
-<p class="small" id="status" role="status"></p>
+<div id="assessmentPanel" role="tabpanel" aria-labelledby="assessmentTab">
+<label class="field-label" for="exerciseTitle">Exercise title</label>
+<input id="exerciseTitle" type="text" maxlength="100" placeholder="Enter an exercise title">
+<label class="field-label" for="notes">Exercise notes</label>
+<textarea id="notes" placeholder="Record exercise ID, assessor notes and relevant observations…"></textarea>
+<div class="actions"><button class="primary" id="saveAssessment">Save assessment</button><button id="reset">Reset scores</button></div>
+<p class="small status" id="status" role="status" aria-live="polite"></p>
+</div>
+<div id="archivePanel" role="tabpanel" aria-labelledby="archiveTab" hidden>
+<div id="archiveList"></div>
+</div>
 </section>
 
-<div class="footer">DEER is an exercise-complexity rating, not a safety approval or a measure of dog/handler performance. Grade the exercise before deployment. Assess safety separately and follow approved training procedures.</div>
+<div class="footer">DEER is an exercise-complexity rating, not a safety approval or a measure of dog/handler performance. Grade the exercise before deployment. Assess safety separately and follow approved training procedures. Scores and archived assessments are stored on this device/browser.</div>
 </main>
+
+<div class="modal-backdrop" id="resetModal" role="dialog" aria-modal="true" aria-labelledby="resetTitle" aria-describedby="resetDescription">
+<div class="modal"><h2 id="resetTitle">Are you sure?</h2><p id="resetDescription">Reset all seven scores to 1, unlock every slider and clear the current exercise title and notes?</p><div class="modal-actions"><button id="cancelReset">No</button><button class="primary danger" id="confirmReset">Yes, reset</button></div></div>
+</div>
+
 <script>
 const criteria = [
- {name:"Accessibility",weight:15,desc:"Rate the accessibility challenge against your authorised, validated training configurations.",anchors:[["1","Direct-contact presentation."],["5","Moderate access challenge."],["10","Moving or effectively inaccessible presentation; use only within your organisation’s validated training framework."]]},
- {name:"Containment",weight:15,desc:"Rate the containment challenge against approved training configurations; use the organisation’s validated categories.",anchors:[["1","Uncontained approved training configuration."],["5","Fully contained approved training configuration."],["10","Fully enclosed approved training configuration; score against your organisation’s validated categories."]]},
- {name:"Odour presentation",weight:15,desc:"Assess against validated training configurations, including approved odour and quantity parameters. Do not predict odour plume behaviour.",anchors:[["1","Standard validated odour type and quantity."],["5","Mixed or variable odour quantities, including configurations not yet validated."],["10","Untested quantity with no validation; use only as an assessment category within your authorised training framework."]]},
+ {name:"Accessibility",weight:15,desc:"Rate how difficult it is for your dog to access the training stimulus.",anchors:[["1","Direct-contact presentation."],["5","Moderate access challenge."],["10","Moving or effectively inaccessible presentation; use only within your organisation’s validated training framework."]]},
+ {name:"Containment",weight:15,desc:"Rate against your organisation’s approved training categories for concealment, containment and material permeability.",anchors:[["1","Uncontained approved training configuration."],["5","Fully contained approved training configuration."],["10","Fully enclosed approved training configuration; score against your organisation’s validated categories."]]},
+ {name:"Odour presentation",weight:15,desc:"Rate against validated odour types and quantities. Do not try to predict odour behaviour.",anchors:[["1","Standard validated odour type and quantity."],["5","Mixed or variable odour quantities, including configurations not yet validated."],["10","Untested quantity with no validation; use only as an assessment category within your authorised training framework."]]},
  {name:"Environmental complexity",weight:15,desc:"Consider environmental variability and how many conditions interact within the exercise.",anchors:[["1","Controlled indoor training activity (e.g. sim house or training warehouse)."],["5","Mixed environmental conditions."],["10","Complex, multivariate scenario."]]},
  {name:"Search environment",weight:15,desc:"Consider search-area scale, layout and the number of search components.",anchors:[["1","Small, straightforward search area."],["5","Multiple search sections or a moderately complex search environment."],["10","Extensive, multi-stage search environment."]]},
  {name:"Distraction & interference",weight:15,desc:"Consider background activity, noise, movement and other controlled competing stimuli.",anchors:[["1","No meaningful competing distractions."],["5","Moderate background activity and competing stimuli."],["10","Very high controlled distraction workload."]]},
  {name:"Handler challenge",weight:10,desc:"Consider briefing complexity, search planning and handler decision-making demands.",anchors:[["1","Straightforward briefing and search planning."],["5","Moderate planning, interpretation and decision-making requirements."],["10","Complex briefing, planning and decision-making requirements."]]}
 ];
-const values=criteria.map(()=>1);
+const STORAGE_KEY='deer-app-v5-state';
+const ARCHIVE_KEY='deer-app-v5-archive';
+const defaultState={values:criteria.map(()=>1),locks:criteria.map(()=>false),title:'',notes:''};
+let state=loadState();
+let archive=loadArchive();
 const host=document.getElementById('criteria');
-criteria.forEach((c,i)=>{
- const el=document.createElement('div');el.className='criterion';
- el.innerHTML=`<div class="crit-head"><div class="crit-title">${String(i+1).padStart(2,'0')} · ${c.name}</div><div class="weight">${c.weight}% weight</div></div>
- <div class="crit-desc">${c.desc}</div>
- <details class="guide"><summary>View 1 / 5 / 10 scoring examples</summary>
-  <div class="anchors">${c.anchors.map(([score,text])=>`<div class="anchor"><strong>${score} / 10</strong>${text}</div>`).join('')}</div>
- </details>
- <div class="range-row"><span>1 · Low</span><span class="value" id="v${i}">1 / 10</span><span>10 · High</span></div>
- <input aria-label="${c.name} score" type="range" min="1" max="10" step="1" value="1" id="s${i}">`;
- host.appendChild(el);
- document.getElementById(`s${i}`).addEventListener('input',e=>{values[i]=Number(e.target.value);document.getElementById(`v${i}`).textContent=values[i]+' / 10';update()});
-});
-function update(){
- const total=values.reduce((sum,v,i)=>sum+v*criteria[i].weight/100,0);
- const rounded=Math.round(total);
- const bands=[
-  ['Pleb level','Minimal challenge'],
-  ['Basic',"Foundational challenge: congrats, you're almost on recall"],
-  ['Intermediate','Moderate challenge'],
-  ['Advanced','High challenge'],
-  ['Extreme','Very high challenge: my dog is basically a Mal'],
-  ['Elite','Highest validated challenge: DNF or Pinocchio']
- ];
- const band=rounded===1?bands[0]:rounded<=3?bands[1]:rounded<=5?bands[2]:rounded<=7?bands[3]:rounded<=9?bands[4]:bands[5];
- document.getElementById('total').textContent=total.toFixed(1);
- document.getElementById('level').textContent=band[0];
- document.getElementById('leveldesc').textContent=band[1];
- document.getElementById('fill').style.width=(total/10*100)+'%';
-}
-document.getElementById('reset').addEventListener('click',()=>{
- values.fill(1);
- criteria.forEach((c,i)=>{document.getElementById(`s${i}`).value=1;document.getElementById(`v${i}`).textContent='1 / 10'});
- document.getElementById('notes').value='';document.getElementById('status').textContent='Scores reset.';update();
-});
-document.getElementById('copy').addEventListener('click',async()=>{
- const total=values.reduce((sum,v,i)=>sum+v*criteria[i].weight/100,0);
- const rounded=Math.round(total);
- const label=rounded===1?'Pleb level':rounded<=3?'Basic':rounded<=5?'Intermediate':rounded<=7?'Advanced':rounded<=9?'Extreme':'Elite';
- const descriptor=rounded===1?'Minimal challenge':rounded<=3?"Foundational challenge: congrats, you're almost on recall":rounded<=5?'Moderate challenge':rounded<=7?'High challenge':rounded<=9?'Very high challenge: my dog is basically a Mal':'Highest validated challenge: DNF or Pinocchio';
- const report='DEER ASSESSMENT\\n'+criteria.map((c,i)=>`${c.name}: ${values[i]}/10 (${c.weight}%)`).join('\\n')+`\\nOverall: ${total.toFixed(1)}/10 — ${label}\\n${descriptor}\\nNotes: ${document.getElementById('notes').value}`;
- try{await navigator.clipboard.writeText(report);document.getElementById('status').textContent='Assessment copied to clipboard.'}
- catch(e){document.getElementById('status').textContent='Clipboard unavailable. You can select and copy the assessment manually.'}
-});
-update();
+function loadState(){try{const saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');if(!saved)return structuredClone(defaultState);return {values:criteria.map((_,i)=>clampScore(saved.values?.[i])),locks:criteria.map((_,i)=>Boolean(saved.locks?.[i])),title:String(saved.title||''),notes:String(saved.notes||'')}}catch(e){return structuredClone(defaultState)}}
+function loadArchive(){try{const a=JSON.parse(localStorage.getItem(ARCHIVE_KEY)||'[]');return Array.isArray(a)?a:[]}catch(e){return []}}
+function clampScore(v){const n=Number(v);return Number.isFinite(n)?Math.min(10,Math.max(1,Math.round(n))):1}
+function persistState(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}catch(e){document.getElementById('status').textContent='Unable to save current settings on this device.'}}
+function persistArchive(){try{localStorage.setItem(ARCHIVE_KEY,JSON.stringify(archive));return true}catch(e){document.getElementById('status').textContent='Archive storage is full or unavailable. Assessment was not saved.';return false}}
+function bandFor(total){const rounded=Math.round(total);if(rounded===1)return ['Pleb level','Minimal challenge: are you still on course?'];if(rounded<=3)return ['Basic',"Foundational challenge: congrats, you're almost on recall"];if(rounded<=5)return ['Intermediate','Moderate challenge: average handler'];if(rounded<=7)return ['Advanced','High challenge: high achiever'];if(rounded<=9)return ['Extreme','Very high challenge: my dog is basically a Mal'];return ['Elite','Highest difficulty: unicorn']}
+function weightedTotal(values=state.values){return values.reduce((sum,v,i)=>sum+v*criteria[i].weight/100,0)}
+function updateResult(){const total=weightedTotal();const band=bandFor(total);document.getElementById('total').textContent=total.toFixed(1);document.getElementById('level').textContent=band[0];document.getElementById('leveldesc').textContent=band[1];document.getElementById('fill').style.width=(total/10*100)+'%'}
+function renderCriteria(){criteria.forEach((c,i)=>{const el=document.createElement('div');el.className='criterion';el.innerHTML=`<div class="crit-head"><div class="crit-title">${c.name}</div><div class="weight">${c.weight}% weight</div></div><div class="crit-desc">${c.desc}</div><details class="guide"><summary>View 1 / 5 / 10 scoring examples</summary><div class="anchors">${c.anchors.map(([score,text])=>`<div class="anchor"><strong>${score} / 10</strong>${text}</div>`).join('')}</div></details><div class="range-row"><span>1 · Low</span><span class="value" id="v${i}">${state.values[i]} / 10</span><span>10 · High</span></div><div class="score-controls"><input aria-label="${c.name} score" type="range" min="1" max="10" step="1" value="${state.values[i]}" id="s${i}" ${state.locks[i]?'disabled':''}><button class="lock-btn" type="button" id="lock${i}" aria-label="${state.locks[i]?'Unlock':'Lock'} ${c.name} slider" aria-pressed="${state.locks[i]}">${state.locks[i]?'🔒':'🔓'}</button></div><div class="lock-label" id="locklabel${i}">${state.locks[i]?'Locked':'Unlocked'}</div>`;host.appendChild(el);
+const slider=el.querySelector(`#s${i}`);slider.addEventListener('input',e=>{state.values[i]=clampScore(e.target.value);document.getElementById(`v${i}`).textContent=state.values[i]+' / 10';persistState();updateResult()});
+el.querySelector(`#lock${i}`).addEventListener('click',()=>{state.locks[i]=!state.locks[i];slider.disabled=state.locks[i];const b=el.querySelector(`#lock${i}`);b.textContent=state.locks[i]?'🔒':'🔓';b.setAttribute('aria-pressed',String(state.locks[i]));b.setAttribute('aria-label',`${state.locks[i]?'Unlock':'Lock'} ${c.name} slider`);document.getElementById(`locklabel${i}`).textContent=state.locks[i]?'Locked':'Unlocked';persistState()});});}
+function syncForm(){document.getElementById('exerciseTitle').value=state.title;document.getElementById('notes').value=state.notes}
+function showTab(tab){const assessment=tab==='assessment';document.getElementById('assessmentPanel').hidden=!assessment;document.getElementById('archivePanel').hidden=assessment;document.getElementById('assessmentTab').setAttribute('aria-selected',String(assessment));document.getElementById('archiveTab').setAttribute('aria-selected',String(!assessment));if(!assessment)renderArchive()}
+function renderArchive(){const list=document.getElementById('archiveList');document.getElementById('archiveCount').textContent=`(${archive.length})`;if(!archive.length){list.innerHTML='<div class="empty">No saved assessments yet.</div>';return}list.innerHTML='';[...archive].sort((a,b)=>b.savedAt-a.savedAt).forEach(item=>{const article=document.createElement('article');article.className='archive-item';const date=new Date(item.savedAt).toLocaleString();const details=document.createElement('details');const summary=document.createElement('summary');summary.className='archive-title';summary.textContent=item.title||'Untitled exercise';details.appendChild(summary);const meta=document.createElement('div');meta.className='archive-meta';meta.textContent=`Saved ${date} · Overall ${Number(item.total).toFixed(1)}/10 · ${item.band}`;details.appendChild(meta);const body=document.createElement('div');body.className='archive-details';body.textContent=[...criteria.map((c,i)=>`${c.name}: ${item.values[i]}/10`),`Overall: ${Number(item.total).toFixed(1)}/10 — ${item.band}`,item.description||'',`Notes: ${item.notes||'None'}`].filter(Boolean).join('\n');details.appendChild(body);article.appendChild(details);list.appendChild(article)})}
+renderCriteria();syncForm();updateResult();renderArchive();
+document.getElementById('exerciseTitle').addEventListener('input',e=>{state.title=e.target.value;persistState()});document.getElementById('notes').addEventListener('input',e=>{state.notes=e.target.value;persistState()});
+document.getElementById('assessmentTab').addEventListener('click',()=>showTab('assessment'));document.getElementById('archiveTab').addEventListener('click',()=>showTab('archive'));
+document.getElementById('saveAssessment').addEventListener('click',()=>{const title=state.title.trim();if(!title){document.getElementById('status').textContent='Please enter an exercise title before saving.';document.getElementById('exerciseTitle').focus();return}const total=weightedTotal();const band=bandFor(total);const record={id:`${Date.now()}-${Math.random().toString(36).slice(2,8)}`,title,notes:state.notes,values:[...state.values],total,band:band[0],description:band[1],savedAt:Date.now()};archive.push(record);if(!persistArchive()){archive.pop();return}document.getElementById('status').textContent=`“${title}” saved to the archive.`;renderArchive();showTab('archive')});
+const modal=document.getElementById('resetModal');function openReset(){modal.classList.add('show');document.getElementById('cancelReset').focus()}function closeReset(){modal.classList.remove('show');document.getElementById('reset').focus()}document.getElementById('reset').addEventListener('click',openReset);document.getElementById('cancelReset').addEventListener('click',closeReset);document.getElementById('confirmReset').addEventListener('click',()=>{state.values=criteria.map(()=>1);state.locks=criteria.map(()=>false);state.title='';state.notes='';persistState();criteria.forEach((c,i)=>{const slider=document.getElementById(`s${i}`);slider.value=1;slider.disabled=false;document.getElementById(`v${i}`).textContent='1 / 10';const b=document.getElementById(`lock${i}`);b.textContent='🔓';b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',`Lock ${c.name} slider`);document.getElementById(`locklabel${i}`).textContent='Unlocked'});syncForm();updateResult();document.getElementById('status').textContent='Scores reset and all sliders unlocked.';closeReset()});modal.addEventListener('click',e=>{if(e.target===modal)closeReset()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('show'))closeReset()});
 </script>
 <script>
-if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
-  window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
-}
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}
 </script>
 </body>
 </html>

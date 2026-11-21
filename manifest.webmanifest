@@ -1,13 +1,13 @@
 {
-  "name": "DEER \u2013 Detection Exercise Extremity Rating",
+  "name": "DEER \u2013 Detection Exercise Extremeness Rating",
   "short_name": "DEER",
-  "description": "Interactive detection dog training exercise extremity calculator.",
+  "description": "Interactive detection dog training exercise extremeness calculator.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#101820",
-  "theme_color": "#17212b",
+  "theme_color": "#101820",
   "icons": [
     {
       "src": "./icon-192.png",
