@@ -25,6 +25,11 @@ h2{font-size:1.08rem;margin:0 0 12px}
 .crit-title{font-weight:750}
 .weight{font-size:.76rem;color:var(--muted);white-space:nowrap}
 .crit-desc{color:var(--muted);font-size:.82rem;margin:4px 0 10px}
+.guide{margin:8px 0 10px;border:1px solid var(--line);border-radius:10px;background:#14212b;overflow:hidden}
+.guide summary{cursor:pointer;padding:9px 11px;color:var(--accent);font-size:.8rem;font-weight:750;list-style-position:inside}
+.anchors{display:grid;grid-template-columns:1fr;gap:7px;padding:0 10px 10px}
+.anchor{font-size:.78rem;color:var(--muted);padding:7px 9px;background:var(--panel2);border-radius:8px}
+.anchor strong{color:var(--text);display:inline-block;min-width:32px}
 input[type=range]{width:100%;accent-color:var(--accent);height:28px}
 .range-row{display:flex;justify-content:space-between;align-items:center;font-size:.75rem;color:var(--muted)}
 .value{color:var(--accent);font-weight:800;font-size:1.05rem}
@@ -60,13 +65,14 @@ textarea{width:100%;min-height:84px;border:1px solid var(--line);border-radius:1
 <div class="kicker">OVERALL EXERCISE EXTREMITY</div>
 <div class="scoreline"><div class="big" id="total">1.0</div><div class="outof">/ 10</div></div>
 <div class="level" id="level">Pleb level</div>
+<div class="small" id="leveldesc">Minimal challenge</div>
 <div class="bar"><div class="fill" id="fill"></div></div>
 <p class="small" id="formula">Weighted average · 7 criteria · 100% total weighting</p>
 </section>
 
 <section class="card">
 <h2>01 · Individual scoring criteria</h2>
-<p class="note">Set each criterion from 1 (lowest challenge) to 10 (highest challenge). Scores are weighted automatically.</p>
+<p class="note">Set each criterion from 1 (lowest challenge) to 10 (highest challenge). Expand each scoring guide for 1, 5 and 10 examples. Scores are weighted automatically.</p>
 <div id="criteria"></div>
 </section>
 
@@ -76,11 +82,11 @@ textarea{width:100%;min-height:84px;border:1px solid var(--line);border-radius:1
 <thead><tr><th>Score</th><th>Classification</th><th>General description</th></tr></thead>
 <tbody>
 <tr><td>1</td><td>Pleb level</td><td>Minimal challenge</td></tr>
-<tr><td>2–3</td><td>Basic</td><td>Foundational challenge</td></tr>
+<tr><td>2–3</td><td>Basic</td><td>Foundational challenge: congrats, you're almost on recall</td></tr>
 <tr><td>4–5</td><td>Intermediate</td><td>Moderate challenge</td></tr>
 <tr><td>6–7</td><td>Advanced</td><td>High challenge</td></tr>
-<tr><td>8–9</td><td>Extreme</td><td>Very high challenge</td></tr>
-<tr><td>10</td><td>Elite</td><td>Highest validated challenge</td></tr>
+<tr><td>8–9</td><td>Extreme</td><td>Very high challenge: my dog is basically a Mal</td></tr>
+<tr><td>10</td><td>Elite</td><td>Highest validated challenge: DNF or Pinocchio</td></tr>
 </tbody>
 </table>
 <p class="small">Classification bands are provisional. The calculated score is shown to one decimal place; classification uses the nearest whole-number score.</p>
@@ -99,7 +105,7 @@ textarea{width:100%;min-height:84px;border:1px solid var(--line);border-radius:1
 <tr><td>10</td><td>Maximum validated level</td></tr>
 </tbody>
 </table>
-<p class="note">Apply these anchors using your organisation's approved exercise library and written scoring definitions. For odour presentation and containment, use only approved inert training aids or certified simulants; do not infer real-explosive detectability from quantity, packaging or placement.</p>
+<p class="note">Apply these anchors using your organisation’s authorised training framework and validated exercise configurations. Score the exercise as conducted; do not use this rating to predict odour plume behaviour or real-world detectability.</p>
 </section>
 
 <section class="card">
@@ -117,13 +123,13 @@ textarea{width:100%;min-height:84px;border:1px solid var(--line);border-radius:1
 </main>
 <script>
 const criteria = [
- {name:"Accessibility",weight:15,desc:"Use a documented, approved training configuration to rate the exercise's accessibility challenge."},
- {name:"Containment",weight:15,desc:"Rate only against standardised, approved inert training-aid configurations; do not extrapolate to real explosive materials."},
- {name:"Odour presentation",weight:15,desc:"Rate consistency and validation of the approved training-aid presentation, not predicted plume behaviour or material quantity."},
- {name:"Environmental complexity",weight:15,desc:"Consider general environmental variability and the consistency of the training conditions."},
- {name:"Search environment",weight:15,desc:"Consider search-area scale, layout and the number of search components."},
- {name:"Distraction & interference",weight:15,desc:"Consider background activity, noise, movement and other controlled competing stimuli."},
- {name:"Handler challenge",weight:10,desc:"Consider briefing complexity, search planning and handler decision-making demands."}
+ {name:"Accessibility",weight:15,desc:"Rate the accessibility challenge against your authorised, validated training configurations.",anchors:[["1","Lowest accessibility challenge in the validated training scale."],["5","Moderate accessibility challenge in the validated training scale."],["10","Highest accessibility challenge in the validated training scale."]]},
+ {name:"Containment",weight:15,desc:"Rate the containment challenge against approved training configurations; use the organisation’s validated categories.",anchors:[["1","Lowest containment challenge in the validated training scale."],["5","Moderate containment challenge in the validated training scale."],["10","Highest containment challenge in the validated training scale."]]},
+ {name:"Odour presentation",weight:15,desc:"Assess against validated training configurations, including approved odour and quantity parameters. Do not predict odour plume behaviour.",anchors:[["1","Standard validated odour-presentation configuration."],["5","Intermediate validated odour-presentation configuration."],["10","Highest validated odour-presentation challenge."]]},
+ {name:"Environmental complexity",weight:15,desc:"Consider environmental variability and how many conditions interact within the exercise.",anchors:[["1","Controlled indoor training activity (e.g. sim house or training warehouse)."],["5","Mixed environmental conditions."],["10","Complex, multivariate scenario."]]},
+ {name:"Search environment",weight:15,desc:"Consider search-area scale, layout and the number of search components.",anchors:[["1","Small, straightforward search area."],["5","Multiple search sections or a moderately complex search environment."],["10","Extensive, multi-stage search environment."]]},
+ {name:"Distraction & interference",weight:15,desc:"Consider background activity, noise, movement and other controlled competing stimuli.",anchors:[["1","No meaningful competing distractions."],["5","Moderate background activity and competing stimuli."],["10","Very high controlled distraction workload."]]},
+ {name:"Handler challenge",weight:10,desc:"Consider briefing complexity, search planning and handler decision-making demands.",anchors:[["1","Straightforward briefing and search planning."],["5","Moderate planning, interpretation and decision-making requirements."],["10","Complex briefing, planning and decision-making requirements."]]}
 ];
 const values=criteria.map(()=>1);
 const host=document.getElementById('criteria');
@@ -131,6 +137,9 @@ criteria.forEach((c,i)=>{
  const el=document.createElement('div');el.className='criterion';
  el.innerHTML=`<div class="crit-head"><div class="crit-title">${String(i+1).padStart(2,'0')} · ${c.name}</div><div class="weight">${c.weight}% weight</div></div>
  <div class="crit-desc">${c.desc}</div>
+ <details class="guide"><summary>View 1 / 5 / 10 scoring examples</summary>
+  <div class="anchors">${c.anchors.map(([score,text])=>`<div class="anchor"><strong>${score} / 10</strong>${text}</div>`).join('')}</div>
+ </details>
  <div class="range-row"><span>1 · Low</span><span class="value" id="v${i}">1 / 10</span><span>10 · High</span></div>
  <input aria-label="${c.name} score" type="range" min="1" max="10" step="1" value="1" id="s${i}">`;
  host.appendChild(el);
@@ -139,9 +148,18 @@ criteria.forEach((c,i)=>{
 function update(){
  const total=values.reduce((sum,v,i)=>sum+v*criteria[i].weight/100,0);
  const rounded=Math.round(total);
- let label=rounded===1?'Pleb level':rounded<=3?'Basic':rounded<=5?'Intermediate':rounded<=7?'Advanced':rounded<=9?'Extreme':'Elite';
+ const bands=[
+  ['Pleb level','Minimal challenge'],
+  ['Basic',"Foundational challenge: congrats, you're almost on recall"],
+  ['Intermediate','Moderate challenge'],
+  ['Advanced','High challenge'],
+  ['Extreme','Very high challenge: my dog is basically a Mal'],
+  ['Elite','Highest validated challenge: DNF or Pinocchio']
+ ];
+ const band=rounded===1?bands[0]:rounded<=3?bands[1]:rounded<=5?bands[2]:rounded<=7?bands[3]:rounded<=9?bands[4]:bands[5];
  document.getElementById('total').textContent=total.toFixed(1);
- document.getElementById('level').textContent=label;
+ document.getElementById('level').textContent=band[0];
+ document.getElementById('leveldesc').textContent=band[1];
  document.getElementById('fill').style.width=(total/10*100)+'%';
 }
 document.getElementById('reset').addEventListener('click',()=>{
@@ -153,7 +171,8 @@ document.getElementById('copy').addEventListener('click',async()=>{
  const total=values.reduce((sum,v,i)=>sum+v*criteria[i].weight/100,0);
  const rounded=Math.round(total);
  const label=rounded===1?'Pleb level':rounded<=3?'Basic':rounded<=5?'Intermediate':rounded<=7?'Advanced':rounded<=9?'Extreme':'Elite';
- const report='DEER ASSESSMENT\\n'+criteria.map((c,i)=>`${c.name}: ${values[i]}/10 (${c.weight}%)`).join('\\n')+`\\nOverall: ${total.toFixed(1)}/10 — ${label}\\nNotes: ${document.getElementById('notes').value}`;
+ const descriptor=rounded===1?'Minimal challenge':rounded<=3?"Foundational challenge: congrats, you're almost on recall":rounded<=5?'Moderate challenge':rounded<=7?'High challenge':rounded<=9?'Very high challenge: my dog is basically a Mal':'Highest validated challenge: DNF or Pinocchio';
+ const report='DEER ASSESSMENT\\n'+criteria.map((c,i)=>`${c.name}: ${values[i]}/10 (${c.weight}%)`).join('\\n')+`\\nOverall: ${total.toFixed(1)}/10 — ${label}\\n${descriptor}\\nNotes: ${document.getElementById('notes').value}`;
  try{await navigator.clipboard.writeText(report);document.getElementById('status').textContent='Assessment copied to clipboard.'}
  catch(e){document.getElementById('status').textContent='Clipboard unavailable. You can select and copy the assessment manually.'}
 });
