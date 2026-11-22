@@ -1,4 +1,4 @@
-const CACHE = "deer-app-v6";
+const CACHE = "deer-app-v7";
 const ASSETS = ["./", "./index.html", "./manifest.webmanifest", "./deer-logo.jpg", "./icon-192.png", "./icon-512.png"];
 self.addEventListener("install", event => { event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS))); self.skipWaiting(); });
 self.addEventListener("activate", event => { event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key))))); self.clients.claim(); });
